@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -55,8 +56,14 @@ public class AddNewTaskActivity extends AppCompatActivity {
     }
 
     public void createTask(View v) {
-        //Task new_task = new Task(name, due_date);
+        TextView inputName = findViewById(R.id.inputName);
+        TextView inputDueDate = findViewById(R.id.inputDueDate);
+        name = inputName.getText().toString();
+        //due_date = inputDueDate.getText().toString().split("-");
+        due_date = inputDueDate.getText().toString();
 
-        // send back to main view
+        Task new_task = new Task(name, due_date);
+        // send to main view
+
     }
 }
