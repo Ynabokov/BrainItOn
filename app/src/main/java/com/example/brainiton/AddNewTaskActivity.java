@@ -66,10 +66,10 @@ public class AddNewTaskActivity extends AppCompatActivity {
 
         Task new_task = new Task(name, due_date);
 
+        // Display toast
         Context context = getApplicationContext();
         CharSequence text = "Created task!";
         int duration = Toast.LENGTH_SHORT;
-
         Toast toast = Toast.makeText(context, text, duration);
         toast.show();
 
