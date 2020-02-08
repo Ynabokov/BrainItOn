@@ -1,9 +1,14 @@
 package com.example.brainiton;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -12,45 +17,44 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
-
-    // Tag for debugging
+public class AllTasksActivity extends AppCompatActivity {
     private static final String TAG = "BrainItOn";
 
-
-    ListView listView;
+    ListView allList;
     ArrayList<String> listItem;
 
-    Button allTasksButton;
-
+    Button addTaskButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d(TAG, "onCreate() called");
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_all_tasks);
 
 
-        listView=(ListView)findViewById(R.id.mainList);
+        fillList();
+
+        addTaskButton = findViewById(R.id.addTaskButton);
+        addTaskButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AllTasksActivity.this, AddNewTaskActivity.class);
+                startActivity(intent);
+            }
+        });
+
+    }
+
+    private void fillList() {
+        allList=(ListView)findViewById(R.id.allList);
         listItem = new ArrayList<>();
 
-        listItem.add("test1");
+        listItem.add("test2");
         listItem.add("hi");
         listItem.add("3");
 
 
         final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, android.R.id.text1, listItem);
-        listView.setAdapter(adapter);
-
-
-        allTasksButton = findViewById(R.id.allTasksButton);
-        allTasksButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, AllTasksActivity.class);
-                startActivity(intent);
-            }
-        });
+        allList.setAdapter(adapter);
     }
 
     @Override
@@ -79,5 +83,4 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
         Log.d(TAG, "onDestroy() called");
     }
-
 }

@@ -3,6 +3,8 @@
     <string name="input_name">Task Name</string>
     <string name="input_date">Due Date (YYYY-MM-DD)</string>
     <string name="create_new_task_button">Create New Task</string>
+    <string name="title_activity_all_tasks">AllTasksActivity</string>
+    <string name="button_all_tasks">See all other tasks</string>
     <string name="create_new_task_activity">Create New Task</string>
 
 </resources>

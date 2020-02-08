@@ -9,6 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity
+            android:name=".AllTasksActivity"
+            android:label="@string/title_activity_all_tasks"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.brainiton.MainActivity" />
+        </activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,8 +27,7 @@
         </activity>
         <activity
             android:name=".AddNewTaskActivity"
-            android:label="create_new_task_activity"
-            android:parentActivityName=".MainActivity" >
+            android:label="Create new task">
         </activity>
     </application>
 
