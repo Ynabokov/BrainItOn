@@ -1,6 +1,7 @@
 package com.example.brainiton;
 
 import android.app.DatePickerDialog;
+import android.content.Context;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -47,7 +49,7 @@ public class AddNewTaskActivity extends AppCompatActivity {
                         new DatePickerDialog.OnDateSetListener() {
                             @Override
                             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                                dateInput.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
+                                dateInput.setText(year + "-" + (monthOfYear + 1) + "-" + dayOfMonth);
                             }
                         }, year, month, day);
                 datePicker.show();
@@ -63,6 +65,14 @@ public class AddNewTaskActivity extends AppCompatActivity {
         due_date = inputDueDate.getText().toString();
 
         Task new_task = new Task(name, due_date);
+
+        Context context = getApplicationContext();
+        CharSequence text = "Created task!";
+        int duration = Toast.LENGTH_SHORT;
+
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
+
         // send to main view
 
     }
