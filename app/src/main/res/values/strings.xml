@@ -1,6 +1,7 @@
 <resources>
-    <string name="app_name">BrainIton</string>
-    <string-array name="tasks">
-        <item>No tasks yet</item>
-    </string-array>
+    <string name="app_name">Brain it on</string>
+    <string name="input_name">Task Name</string>
+    <string name="input_date">Due Date (YYYY-MM-DD)</string>
+    <string name="create_new_task_button">Create New Task</string>
+
 </resources>
