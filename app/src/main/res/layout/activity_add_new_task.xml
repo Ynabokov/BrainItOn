@@ -19,8 +19,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="@string/input_date" />
+        android:inputType="date"
+        android:clickable="true"
+        android:focusable="false"
+        android:longClickable="false"
+        android:hint="Due Date" />
 
     <Button
         android:id="@+id/createNewTaskButton"
