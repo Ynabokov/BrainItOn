@@ -37,11 +37,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_TASKS_TABLE);
     }
 
-    public void delete(SQLiteDatabase db){
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_TASKS);
-        onCreate(db);
-    }
-
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_TASKS);
@@ -81,7 +76,7 @@ public ArrayList<Task> getAllTasks() {
     Cursor cursor = db.rawQuery(selectQuery, null);
 
     if(cursor !=null) {
-        do{
+        while(cursor.moveToFirst()){
 
             Task task = new Task();
             task.setName(cursor.getString(0));
@@ -89,7 +84,6 @@ public ArrayList<Task> getAllTasks() {
 
             taskList.add(task);
         }
-        while(cursor.moveToFirst());
     }
     return taskList;
 }
