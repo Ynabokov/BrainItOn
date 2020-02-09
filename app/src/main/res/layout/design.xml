@@ -28,17 +28,25 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:adjustViewBounds="true"
                 android:contentDescription="@string/hat1"
+                android:maxWidth="60pt"
+                android:maxHeight="100pt"
                 android:padding="5pt"
-                tools:srcCompat="@tools:sample/avatars" />
+                android:scaleType="fitXY"
+                tools:srcCompat="@mipmap/face" />
 
             <ImageButton
                 android:id="@+id/imageButton2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:adjustViewBounds="true"
                 android:contentDescription="@string/hat2"
+                android:maxWidth="60pt"
+                android:maxHeight="100pt"
                 android:padding="5pt"
+                android:scaleType="fitXY"
                 tools:srcCompat="@tools:sample/avatars" />
         </TableRow>
 
@@ -48,11 +56,15 @@
 
             <ImageButton
                 android:id="@+id/imageButton3"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:contentDescription="@string/hat3"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/hat1"
+                android:maxWidth="60pt"
+                android:maxHeight="100pt"
                 android:padding="5pt"
+                android:scaleType="fitXY"
                 tools:srcCompat="@tools:sample/avatars" />
 
             <ImageButton
@@ -60,8 +72,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:contentDescription="@string/hat4"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/hat2"
+                android:maxWidth="60pt"
+                android:maxHeight="100pt"
                 android:padding="5pt"
+                android:scaleType="fitXY"
                 tools:srcCompat="@tools:sample/avatars" />
         </TableRow>
 
@@ -71,11 +87,15 @@
 
             <ImageButton
                 android:id="@+id/imageButton5"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:contentDescription="@string/glasses1"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/hat1"
+                android:maxWidth="60pt"
+                android:maxHeight="100pt"
                 android:padding="5pt"
+                android:scaleType="fitXY"
                 tools:srcCompat="@tools:sample/avatars" />
 
             <ImageButton
@@ -83,8 +103,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:contentDescription="@string/glasses2"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/hat2"
+                android:maxWidth="60pt"
+                android:maxHeight="100pt"
                 android:padding="5pt"
+                android:scaleType="fitXY"
                 tools:srcCompat="@tools:sample/avatars" />
         </TableRow>
 
