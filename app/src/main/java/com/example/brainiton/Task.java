@@ -7,6 +7,7 @@ public class Task {
     public String due_date;
     public boolean completed;
 
+
     public Task(String n, String d) {
         this(n, d, false);
     }
