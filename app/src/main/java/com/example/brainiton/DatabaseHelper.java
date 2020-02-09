@@ -81,12 +81,35 @@ public ArrayList<Task> getAllTasks() {
 
         Task task = new Task();
         task.setName(cursor.getString(0));
-        //task.setDue_date(date);
+        task.setDue_day(cursor.getString(1));
+        task.setDue_month(cursor.getString(2));
+        task.setDue_year(cursor.getString(3));
 
         taskList.add(task);
     }
     return taskList;
 }
+
+
+    public ArrayList<Task> getAll3Tasks() {
+        ArrayList<Task> taskList = new ArrayList<>();
+        String selectQuery = "SELECT * FROM "+ TABLE_TASKS + " LIMIT 3";
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        while(cursor.moveToNext()){
+
+            Task task = new Task();
+            task.setName(cursor.getString(0));
+            task.setDue_day(cursor.getString(1));
+            task.setDue_month(cursor.getString(2));
+            task.setDue_year(cursor.getString(3));
+
+            taskList.add(task);
+        }
+        return taskList;
+    }
+
 public int updateTasks(Task task){
     SQLiteDatabase db = this.getWritableDatabase();
     ContentValues values = new ContentValues();

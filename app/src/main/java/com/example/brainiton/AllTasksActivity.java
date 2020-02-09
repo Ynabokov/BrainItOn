@@ -50,6 +50,7 @@ public class AllTasksActivity extends AppCompatActivity {
 
         ArrayList<String> names = new ArrayList<>();
         for (Task task : listItem) {
+            String name = task.getName();
             names.add(task.getName());
         }
 

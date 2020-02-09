@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
 
     int size = 40;
     int n = 1;
-    public void setBrainSize(View){
+    public void setBrainSize(View view){
         if(n<3) {
             size = size + 20;
             n++;
@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     ListView listView;
-    ArrayList<String> listItem;
+    ArrayList<Task> listItem;
 
     Button allTasksButton;
 
@@ -42,18 +42,24 @@ public class MainActivity extends AppCompatActivity {
         Log.d(TAG, "onCreate() called");
         setContentView(R.layout.activity_main);
 
-//        final DatabaseHelper databaseHelper = new DatabaseHelper(this);
+        final DatabaseHelper databaseHelper = new DatabaseHelper(this);
+
+
+
+
 
         listView=(ListView)findViewById(R.id.mainList);
-        listItem = new ArrayList<>();
+        listItem = databaseHelper.getAll3Tasks();
 
-        listItem.add("test1");
-        listItem.add("hi");
-        listItem.add("3");
+        ArrayList<String> names = new ArrayList<>();
+        for (Task task : listItem) {
+            String name = task.getName();
+            names.add(task.getName());
+        }
 
 
         final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, android.R.id.text1, listItem);
+                android.R.layout.simple_list_item_1, android.R.id.text1, names);
         listView.setAdapter(adapter);
 
 
