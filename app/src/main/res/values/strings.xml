@@ -3,6 +3,13 @@
     <string name="input_name">Task Name</string>
     <string name="input_date">Due Date (YYYY-MM-DD)</string>
     <string name="create_new_task_button">Create New Task</string>
+    <string name="customize_character">Customize Character</string>
+    <string name="hat1">Hat1</string>
+    <string name="glasses1">Glasses1</string>
+    <string name="glasses2">Glasses2</string>
+    <string name="hat2">Hat2</string>
+    <string name="hat3">Hat3</string>
+    <string name="hat4">Hat4</string>
     <string name="title_activity_all_tasks">AllTasksActivity</string>
     <string name="button_all_tasks">See all other tasks</string>
     <string name="create_new_task_activity">Create New Task</string>
