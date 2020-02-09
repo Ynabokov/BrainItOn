@@ -13,6 +13,7 @@
     <string name="title_activity_all_tasks">AllTasksActivity</string>
     <string name="button_all_tasks">See all other tasks</string>
     <string name="create_new_task_activity">Create New Task</string>
+    <string name="complete_task">Complete Task</string>
     <string name="add_task">Add Task</string>
 
 </resources>

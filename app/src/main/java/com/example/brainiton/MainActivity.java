@@ -14,6 +14,19 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
+    int size = 40;
+    int n = 1;
+    public void setBrainSize(View){
+        if(n<3) {
+            size = size + 20;
+            n++;
+        } else if(n>=3){
+            size = 40;
+            n = 1;
+        }
+    }
+
+
     // Tag for debugging
     private static final String TAG = "BrainItOn";
 
@@ -53,6 +66,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+
+
 
     @Override
     public void onStart() {
