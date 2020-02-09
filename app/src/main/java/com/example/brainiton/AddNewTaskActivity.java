@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.text.InputType;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -16,6 +17,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.Calendar;
 
 public class AddNewTaskActivity extends AppCompatActivity {
+
+    DatabaseHelper databaseHelper;
 
     String name;
     String due_date;
@@ -31,6 +34,8 @@ public class AddNewTaskActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new_task);
+
+        databaseHelper = new DatabaseHelper(this);
 
         nameInput = findViewById(R.id.inputName);
         dateInput = findViewById(R.id.inputDueDate);
@@ -61,10 +66,12 @@ public class AddNewTaskActivity extends AppCompatActivity {
         TextView inputName = findViewById(R.id.inputName);
         TextView inputDueDate = findViewById(R.id.inputDueDate);
         name = inputName.getText().toString();
-        //due_date = inputDueDate.getText().toString().split("-");
         due_date = inputDueDate.getText().toString();
 
-        Task new_task = new Task(name, due_date);
+        Log.d("Format", due_date);
+        Task new_task = new Task(name, "2020", "01", "01");
+
+
 
         // Display toast
         Context context = getApplicationContext();

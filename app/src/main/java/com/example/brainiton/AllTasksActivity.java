@@ -21,7 +21,8 @@ public class AllTasksActivity extends AppCompatActivity {
     private static final String TAG = "BrainItOn";
 
     ListView allList;
-    ArrayList<String> listItem;
+    ArrayList<Task> listItem;
+    DatabaseHelper databaseHelper = new DatabaseHelper(this);
 
     Button addTaskButton;
     @Override
@@ -45,15 +46,16 @@ public class AllTasksActivity extends AppCompatActivity {
 
     private void fillList() {
         allList=(ListView)findViewById(R.id.allList);
-        listItem = new ArrayList<>();
+        listItem = databaseHelper.getAllTasks();
 
-        listItem.add("test2");
-        listItem.add("hi");
-        listItem.add("3");
+        ArrayList<String> names = new ArrayList<>();
+        for (Task task : listItem) {
+            names.add(task.getName());
+        }
 
 
         final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, android.R.id.text1, listItem);
+                android.R.layout.simple_list_item_1, android.R.id.text1, names);
         allList.setAdapter(adapter);
     }
 

@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         Log.d(TAG, "onCreate() called");
         setContentView(R.layout.activity_main);
 
+//        final DatabaseHelper databaseHelper = new DatabaseHelper(this);
 
         listView=(ListView)findViewById(R.id.mainList);
         listItem = new ArrayList<>();

@@ -23,7 +23,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String KEY_DUE_DAY = "day";
     private static final String KEY_DUE_MONTH = "month";
     private static final String KEY_DUE_YEAR = "year";
-    private static final String KEY_STATUS = "status";
+    private static final String KEY_COMPLETED = "status";
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -31,10 +31,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String CREATE_TASKS_TABLE = "CREATE TABLE " +
-                TABLE_TASKS + "(" + KEY_NAME + "STRING PRIMARY KEY," + KEY_DUE_DAY + "TEXT"
-                + KEY_DUE_MONTH + "TEXT" + KEY_DUE_YEAR + "TEXT" + KEY_STATUS + "BOOLEAN)";
+        String CREATE_TASKS_TABLE = "CREATE TABLE IF NOT EXISTS " +  TABLE_TASKS +"(ID INTEGER PRIMARY KEY," + KEY_NAME +
+                " TEXT," + KEY_DUE_DAY + " TEXT," + KEY_DUE_MONTH + " TEXT,"
+                + KEY_DUE_YEAR + " TEXT," + KEY_COMPLETED + " BOOLEAN)";
         db.execSQL(CREATE_TASKS_TABLE);
+    }
+
+    public void delete(SQLiteDatabase db){
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_TASKS);
+        onCreate(db);
     }
 
     @Override
@@ -47,27 +52,30 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("KEY_NAME", task.getName());
-        values.put("KEY_DUE_DATE", task.getDueDate().toString());
+        values.put("KEY_DUE_DAY", task.getDue_day().toString());
+        values.put("KEY_DUE_MONTH", task.getDue_month().toString());
+        values.put("KEY_DUE_YEAR", task.getDue_year().toString());
+        values.put("KEY_COMPLETED", task.getCompleted());
 
         db.insert(TABLE_TASKS, null, values);
         db.close();
     }
 
-    Task getTask(String name) {
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query(TABLE_TASKS, new String[]{KEY_NAME}, KEY_NAME + "=?", new String[]{String.valueOf(name)}, null, null, null, null);
-        if (cursor != null) {
-            cursor.moveToFirst();
-        }
-//        String strDate = cursor.getString(1);
-//        SimpleDateFormat formattedDate = new SimpleDateFormat("dd-MM-yyyy");
-//        Date date = formattedDate.parse(strDate);
-        Task task = new Task(cursor.getString(0), "date");
-        return task;
-    }
+//    Task getTask(String name) {
+//        SQLiteDatabase db = this.getReadableDatabase();
+//        Cursor cursor = db.query(TABLE_TASKS, new String[]{KEY_NAME}, KEY_NAME + "=?", new String[]{String.valueOf(name)}, null, null, null, null);
+//        if (cursor != null) {
+//            cursor.moveToFirst();
+//        }
+////        String strDate = cursor.getString(1);
+////        SimpleDateFormat formattedDate = new SimpleDateFormat("dd-MM-yyyy");
+////        Date date = formattedDate.parse(strDate);
+//        Task task = new Task(cursor.getString(0), "date");
+//        return task;
+//    }
 
-public List<Task> getAllTasks() {
-    List<Task> taskList = new ArrayList<>();
+public ArrayList<Task> getAllTasks() {
+    ArrayList<Task> taskList = new ArrayList<>();
     String selectQuery = "SELECT * FROM "+ TABLE_TASKS;
     SQLiteDatabase db = this.getWritableDatabase();
     Cursor cursor = db.rawQuery(selectQuery, null);
@@ -99,19 +107,6 @@ public void deleteTask(Task task){
     db.close();
 
 }
-//public Calendar formatDate(Cursor cursor){
-//    String strDate = cursor.getString(1);
-//    SimpleDateFormat formattedDate = new SimpleDateFormat("dd-MM-yyyy");
-//    Date date = null;
-//    try {
-//        date = formattedDate.parse(strDate);
-//    } catch (ParseException e) {
-//        e.printStackTrace();
-//    }
-//    Calendar cal = Calendar.getInstance();
-//    cal.setTime(date);
-//    return cal;
-//}
 
 public int getTasksCount(){
     String countQuery = "SELECT * FROM "+ TABLE_TASKS;
