@@ -26,7 +26,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="19dp"
         android:layout_marginBottom="33dp"
-        android:text="@string/button_all_tasks"
+        android:text="@string/add_task"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

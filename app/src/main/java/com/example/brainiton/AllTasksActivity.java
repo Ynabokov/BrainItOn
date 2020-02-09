@@ -63,11 +63,13 @@ public class AllTasksActivity extends AppCompatActivity {
     public void onStart() {
         super.onStart();
         Log.d(TAG, "onStart() called");
+        fillList();
     }
     @Override
     public void onResume() {
         super.onResume();
         Log.d(TAG, "onResume() called");
+        fillList();
     }
     @Override
     public void onPause() {
