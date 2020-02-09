@@ -4,6 +4,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -43,14 +45,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    void addTask(Task task) {
+    public void addTask(Task task) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put("KEY_NAME", task.getName());
-        values.put("KEY_DUE_DAY", task.getDue_day().toString());
-        values.put("KEY_DUE_MONTH", task.getDue_month().toString());
-        values.put("KEY_DUE_YEAR", task.getDue_year().toString());
-        values.put("KEY_COMPLETED", task.getCompleted());
+        values.put(KEY_NAME, task.getName());
+        values.put(KEY_DUE_DAY, task.getDue_day());
+        values.put(KEY_DUE_MONTH, task.getDue_month());
+        values.put(KEY_DUE_YEAR, task.getDue_year());
+        values.put(KEY_COMPLETED, task.getCompleted());
 
         db.insert(TABLE_TASKS, null, values);
         db.close();
@@ -75,15 +77,13 @@ public ArrayList<Task> getAllTasks() {
     SQLiteDatabase db = this.getWritableDatabase();
     Cursor cursor = db.rawQuery(selectQuery, null);
 
-    if(cursor !=null) {
-        while(cursor.moveToFirst()){
+    while(cursor.moveToNext()){
 
-            Task task = new Task();
-            task.setName(cursor.getString(0));
-            //task.setDue_date(date);
+        Task task = new Task();
+        task.setName(cursor.getString(0));
+        //task.setDue_date(date);
 
-            taskList.add(task);
-        }
+        taskList.add(task);
     }
     return taskList;
 }

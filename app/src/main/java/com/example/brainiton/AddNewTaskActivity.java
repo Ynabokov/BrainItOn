@@ -68,9 +68,16 @@ public class AddNewTaskActivity extends AppCompatActivity {
         name = inputName.getText().toString();
         due_date = inputDueDate.getText().toString();
 
-        Log.d("Format", due_date);
-        Task new_task = new Task(name, "2020", "01", "01");
+        String[] dates = due_date.split("-");
+        String due_day = dates[2];
+        String due_month = dates[1];
+        String due_year = dates[0];
+        Log.d("Time", due_day);
+        Log.d("Time", due_month);
+        Log.d("Time", due_year);
+        Task new_task = new Task(name, due_day, due_month, due_year);
 
+        databaseHelper.addTask(new_task);
 
 
         // Display toast
@@ -80,6 +87,8 @@ public class AddNewTaskActivity extends AppCompatActivity {
         Toast toast = Toast.makeText(context, text, duration);
         toast.show();
 
+
+        finish();
         // send to main view
 
     }
